@@ -1,0 +1,67 @@
+<div>
+    <div [ngClass]="'tableFlex'">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let element"> {{element.price}}zł </td>
+            </ng-container>
+
+            <ng-container matColumnDef="count">
+                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="trash">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element"><button mat-icon-button color="warn" (click)="delProduct(element.id)"><mat-icon>delete</mat-icon></button></td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+    </div>
+
+    <div [ngClass]="'expandFlex'"> 
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title><mat-icon>add</mat-icon></mat-panel-title>
+                <mat-panel-description>Add Element</mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <form>
+
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput name="name" type="text" [(ngModel)]="productInfo.name">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input matInput name="price" type="number" [(ngModel)]="productInfo.price">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Count</mat-label>
+                    <input matInput name="count" type="number" [(ngModel)]="productInfo.count">
+                </mat-form-field>
+
+                <button mat-mini-fab color="primary" (click)="submitted();"><mat-icon>add</mat-icon></button>
+        
+            </form>
+
+        </mat-expansion-panel>
+    </div>
+</div>

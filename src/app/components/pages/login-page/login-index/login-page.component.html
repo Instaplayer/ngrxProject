@@ -1,0 +1,30 @@
+<form onsubmit="document.form.reset()" name="form">
+
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input (ngModelChange)="changed()" name="username" type="text" matInput [(ngModel)]="userInfo.name">
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-hint>Enter your username here</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input (ngModelChange)="changed()" name="password" type="password" matInput [(ngModel)]="userInfo.password">
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-hint>Enter your password here</mat-hint>
+    </mat-form-field>
+
+    <mat-checkbox name="remember" [(ngModel)]="userInfo.remember" (change)="changed()">Remember me?</mat-checkbox>
+
+    <div>
+        <button mat-raised-button color="primary" type="submit">
+
+            <div [ngClass]='"submitContent"'>
+                <div>Submit</div>
+                <mat-icon matSuffix>send</mat-icon>
+            </div>
+
+        </button>
+    </div>
+
+</form>

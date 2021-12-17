@@ -1,0 +1,23 @@
+<mat-drawer-container [hasBackdrop]="true">
+    <mat-drawer #headersidenav mode="side">
+        <div *ngFor="let link of links">
+            <a mat-flat-button routerLink="{{link.content}}" [ngClass]='"drawerButtonSize"'>{{link.fullName}}</a>
+        </div>
+    </mat-drawer>
+
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="headersidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    
+        <span>{{title}}</span>
+    </mat-toolbar>
+
+    <ng-content></ng-content>
+
+</mat-drawer-container>
+
+
+
+
+
